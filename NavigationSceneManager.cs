@@ -9,7 +9,10 @@ namespace KGTools.General
 	/// <summary>
 	/// This function is a scene manager that controls a navigation stack of scene objects.
 	/// </summary>
+#if KGT_SERVICE_ACTIVE
+	// If KGTools.General is installed all navigation managers will be registered as valid services.
 	[Service("NavigationSceneManager")]
+#endif
 	public abstract class NavigationSceneManager : MonoBehaviour
 	{
 
@@ -95,9 +98,9 @@ namespace KGTools.General
 		#region MonoBehaviour
 
 		/// <summary>
-		/// If this is not initialized manually by the time Awake is called we should auto-initialize it.
+		/// If this is not initialized manually by the time Start is called we should auto-initialize it.
 		/// </summary>
-		private void Awake()
+		private void Start()
 		{
 			this.Initalize();
 		}
